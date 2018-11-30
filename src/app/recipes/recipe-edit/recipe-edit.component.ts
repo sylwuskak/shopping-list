@@ -13,6 +13,7 @@ export class RecipeEditComponent implements OnInit {
   id: number;
   editMode = false;
   recipeForm: FormGroup;
+  
 
   constructor(private route: ActivatedRoute, private rService: RecipeService, private router: Router) { }
 
@@ -59,6 +60,10 @@ export class RecipeEditComponent implements OnInit {
   onDeleteIngredient(index: number){
     (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
 
+  }
+ 
+  getControls() {
+      return (<FormArray>this.recipeForm.get('ingredients')).controls;
   }
 
   private initForm(){
